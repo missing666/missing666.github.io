@@ -21,20 +21,20 @@
   
     <meta name="description" content="Python 导入机制：绝对导入与相对导入在Python中，当项目工程较大时，我们通常会将代码划分为多个包（package）进行管理。在这种情况下，各个模块（module）之间的相互导入不可避免。如果不熟悉绝对导入和相对导入的规则，可能会遇到各种导入相关的异常错误，例如：  ModuleNotFoundError: No module named &#39;moduleY&#39; ValueEr">
 <meta property="og:type" content="article">
-<meta property="og:title" content="python包导入问题">
-<meta property="og:url" content="https://missing666.github.io/2024/09/10/python/python%E5%8C%85%E5%AF%BC%E5%85%A5%E9%97%AE%E9%A2%98/index.html">
+<meta property="og:title" content="Python包导入问题">
+<meta property="og:url" content="https://missing666.github.io/2024/09/10/Python/Python%E5%8C%85%E5%AF%BC%E5%85%A5%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="missing&#39;s blog">
 <meta property="og:description" content="Python 导入机制：绝对导入与相对导入在Python中，当项目工程较大时，我们通常会将代码划分为多个包（package）进行管理。在这种情况下，各个模块（module）之间的相互导入不可避免。如果不熟悉绝对导入和相对导入的规则，可能会遇到各种导入相关的异常错误，例如：  ModuleNotFoundError: No module named &#39;moduleY&#39; ValueEr">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-09-10T03:00:19.000Z">
-<meta property="article:modified_time" content="2024-09-12T11:46:59.964Z">
+<meta property="article:modified_time" content="2025-12-20T13:12:05.855Z">
 <meta property="article:author" content="missing">
-<meta property="article:tag" content="python基础">
+<meta property="article:tag" content="Python基础">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>python包导入问题 - missing&#39;s blog</title>
+  <title>Python包导入问题 - missing&#39;s blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -213,7 +213,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="python包导入问题"></span>
+            <span id="subtitle" data-typed-text="Python包导入问题"></span>
           
         </div>
 
@@ -236,7 +236,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.1k 字
+          999 字
         
       </span>
     
@@ -247,7 +247,7 @@
         
         
         
-          10 分钟
+          9 分钟
         
       </span>
     
@@ -284,12 +284,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">python包导入问题</h1>
+            <h1 id="seo-header">Python包导入问题</h1>
             
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年9月12日 晚上
+                    本文最后更新于 2025年12月20日 晚上
                   
                 
               </p>
@@ -306,23 +306,13 @@
 <h2 id="目录布局示例"><a href="#目录布局示例" class="headerlink" title="目录布局示例"></a>目录布局示例</h2><p>假设项目包的目录布局如下：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">package/<br>    __init__.py<br>    subpackage1/<br>        __init__.py<br>        moduleX.py<br>        moduleY.py<br>    subpackage2/<br>        __init__.py<br>        moduleZ.py<br>    moduleA.py<br></code></pre></td></tr></table></figure>
 
-<h2 id="1-基本原理"><a href="#1-基本原理" class="headerlink" title="1. 基本原理"></a>1. 基本原理</h2><p>在 Python 中，一个 <code>.py</code> 文件称为模块（module），包含 <code>__init__.py</code> 文件的目录称为包（package）。</p>
+<h2 id="1-基本原理"><a href="#1-基本原理" class="headerlink" title="1. 基本原理"></a>1. 基本原理</h2><p>在 Python 中，一个 <code>.py</code> 文件称为模块（module）<br>包含 <code>__init__.py</code> 文件的目录称为包（package）。</p>
 <p>当一个模块被执行时，Python 会根据 <code>sys.path</code> 给出的路径去查找在模块中引入的包或其他模块。如果找不到，则会报错。</p>
 <h2 id="2-绝对导入"><a href="#2-绝对导入" class="headerlink" title="2. 绝对导入"></a>2. 绝对导入</h2><p>绝对导入是默认的导入方式，它更常见，并且它可以实现相对导入的所有功能。</p>
 <h3 id="2-1-用法"><a href="#2-1-用法" class="headerlink" title="2.1 用法"></a>2.1 用法</h3><p>绝对导入可以使用 <code>import &lt;module&gt;</code> 或 <code>from &lt;module&gt; import &lt;object&gt;</code> 这两种语法。比如在 <code>moduleA</code> 模块中，以下绝对导入语句是有效的：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># moduleA.py</span><br><span class="hljs-keyword">import</span> package.subpackage1.moduleX <span class="hljs-keyword">as</span> moduleX<br><span class="hljs-keyword">from</span> package.subpackage1 <span class="hljs-keyword">import</span> moduleY<br><span class="hljs-keyword">from</span> package.subpackage2 <span class="hljs-keyword">import</span> moduleZ<br></code></pre></td></tr></table></figure>
 
 <p>需要注意的是，在当前模块中引入同级别的模块或包下的模块时，最好写完整的导入路径。例如，在 <code>moduleX</code> 中引入同一级别的 <code>moduleY</code>：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># moduleX.py</span><br><span class="hljs-keyword">import</span> moduleY  <span class="hljs-comment"># 错误的导入方式</span><br></code></pre></td></tr></table></figure>
-
-<p>而在 <code>moduleA.py</code> 中执行以下代码时：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># moduleA.py</span><br><span class="hljs-keyword">import</span> package.subpackage1.moduleX<br></code></pre></td></tr></table></figure>
-
-<p>执行 <code>python moduleA.py</code> 会提示 <code>ModuleNotFoundError: No module named &#39;moduleY&#39;</code>。</p>
-<p>这是因为，执行 <code>moduleA</code> 的路径是 <code>D:/top/package</code>（假设 <code>D:/top</code> 是示例程序的目录），导入语句 <code>import moduleY</code> 会被解析为 <code>D:/top/package/moduleY.py</code>，但这个路径不存在。</p>
-<p>解决方法是将 <code>moduleX</code> 中的 <code>import moduleY</code> 改为：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 正确的导入方式</span><br><span class="hljs-keyword">import</span> package.subpackage1.moduleY<br></code></pre></td></tr></table></figure>
-
 <h3 id="2-2-不足"><a href="#2-2-不足" class="headerlink" title="2.2 不足"></a>2.2 不足</h3><ul>
 <li>导入同一个包下的模块需要写完整的导入路径，如果层级很深，路径会显得很长。</li>
 <li>如果要改变层级较高的包名（如顶级包），所有导入路径都需要更改。</li>
@@ -385,7 +375,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/python/" class="category-chain-item">python</a>
+  <a href="/categories/Python/" class="category-chain-item">Python</a>
   
   
 
@@ -400,7 +390,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/python%E5%9F%BA%E7%A1%80/" class="print-no-link">#python基础</a>
+        <a href="/tags/Python%E5%9F%BA%E7%A1%80/" class="print-no-link">#Python基础</a>
       
     </div>
   
