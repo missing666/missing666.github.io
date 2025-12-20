@@ -204,6 +204,33 @@
   
   
   <entry>
+    <title>os-lab0</title>
+    <link href="/2024/09/06/os%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/lab0/"/>
+    <url>/2024/09/06/os%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/lab0/</url>
+    
+    <content type="html"><![CDATA[<h2 id="1-思考题"><a href="#1-思考题" class="headerlink" title="1.思考题"></a>1.思考题</h2><h3 id="0-1"><a href="#0-1" class="headerlink" title="0.1"></a>0.1</h3><p>README.txt位置:<br>cat Untracked.txt:位于Untracked区<br>cat Stage.txt：Staged区。<br>cat Modified.txt:modifed区。</p><h3 id="0-2"><a href="#0-2" class="headerlink" title="0.2"></a>0.2</h3><p>add the file 、stage the file 和<br>commit 分别对应的是 Git 里的 <code>git add,git add,git commit</code>命令</p><h3 id="0-3"><a href="#0-3" class="headerlink" title="0.3"></a>0.3</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs stylus"><span class="hljs-number">1</span><span class="hljs-selector-class">.git</span> checkout -- print<span class="hljs-selector-class">.c</span><br><span class="hljs-number">2</span><span class="hljs-selector-class">.git</span> reset HEAD print<span class="hljs-selector-class">.c</span><br>git checkout -- print<span class="hljs-selector-class">.c</span><br><span class="hljs-number">3</span><span class="hljs-selector-class">.git</span> rm <span class="hljs-attr">--cached</span> hello.txt<br></code></pre></td></tr></table></figure><h3 id="0-4"><a href="#0-4" class="headerlink" title="0.4"></a>0.4</h3><p>用<code>git reset --hard</code> 进行版本回溯，功能很强大，但是一旦使用，就没有后悔药。</p><h3 id="0-5"><a href="#0-5" class="headerlink" title="0.5"></a>0.5</h3><p>执行结果：<br>1.在shell命令行中输出：<code>first</code><br>2.output.txt文件中为：<code>second</code><br>3.output.txt文件中为：<code>third</code><br>4.output.txt文件中为：</p><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs text">third<br>forth<br></code></pre></td></tr></table></figure><h3 id="0-6"><a href="#0-6" class="headerlink" title="0.6"></a>0.6</h3><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs routeros">result中为：<br>Shell Start<span class="hljs-built_in">..</span>.<br><span class="hljs-built_in">set</span> <span class="hljs-attribute">a</span>=1<br><span class="hljs-built_in">set</span> <span class="hljs-attribute">b</span>=2<br><span class="hljs-built_in">set</span> <span class="hljs-attribute">c</span>=a+b<br>c = 3<br>save c <span class="hljs-keyword">to</span> ./file1<br>save b <span class="hljs-keyword">to</span> ./file2<br>save a <span class="hljs-keyword">to</span> ./file3<br>save file1 file2 file3 <span class="hljs-keyword">to</span> file4<br>save file4 <span class="hljs-keyword">to</span> ./result<br>3<br>2<br>1<br></code></pre></td></tr></table></figure><p>test的第1行打印了Shell Start… test的第2行打印了set a&#x3D;1<br>test的第3行给变量a赋值为1 test的第4行打印了set b&#x3D;2<br>test的第5行给变量b赋值为2 test的第6行打印了set c&#x3D;a+b<br>test的第7行进行了c&#x3D;a+b的运算 test的第8行打印了c&#x3D;3<br>test的第9行打印了save c to .&#x2F;file1<br>test的第10行把c的值重定向到了file1中<br>test的第11行打印了save b to .&#x2F;file2<br>test的第12行把b的值重定向到了file2中<br>test的第13行打印了save a to .&#x2F;file3<br>test的第14行把a的值重定向到了file3中<br>test的第15行打印了save file1 file2 file3 to file4<br>test的17，18，19行把file1，file2，file3的内容全部重定向到了file4中<br>test的第20行打印了save file4 to .&#x2F;result<br>test的第21行把file4的内容重定向到了result中</p><h2 id="2-难点分析"><a href="#2-难点分析" class="headerlink" title="2.难点分析"></a>2.难点分析</h2><ol><li>linux的shell界面不是直观的图形界面，而是用命令行进行所有的任务，一开始难以适应。</li><li>linux中有基本的命令，有许多的脚本命令，还有一些强大的工具命令，初学的命令较多，而且命令的不同参数有不同作用，容易搞混淆，这让不太熟练的初学者感到吃力。</li><li>对于Makefile的理解要到位，特别是不同target之间的依赖关系。</li><li>要学会熟练运用sed和awk等脚本语言的基础命令。</li></ol><p><img src="/2024/09/06/os%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/lab0/lab0-1.PNG"></p><h2 id="3-实验体会"><a href="#3-实验体会" class="headerlink" title="3.实验体会"></a>3.实验体会</h2><p>lab0我们主要对linux系统的命令行操作进行了简单的学习和熟悉。学习了GCC，Makefile，Git等等强大工具的基本使用。我能够明显体会到linux系统与windows系统的不同，Linux系统拥有强大的命令行工具和脚本语言，可以提高工作效率和灵活性。但强大的功能需要我们付出很高的学习成本，许多的命令需要多用多练，在脑中形成长期记忆，才能熟练掌握。<br>本次实验还带我们回忆了c语言和mips的内容，需要我们再一次回顾计组的内容，在学习OS的过程中起到承上启下的作用，也便于我们更好地理解OS的底层原理。</p><table><thead><tr><th align="left">git branch -l                   # 查看所有分支</th></tr></thead><tbody><tr><td align="left">git checkout <branch_name>      # 切换到指定分支</td></tr><tr><td align="left">git checkout -b <branch_name>   # 根据当前分支，新建一个分支并切换到该分支上</td></tr><tr><td align="left">git merge [<branch1>] <branch2> # 将branch2合并到branch1，省略branch1参数时表示合并到当前分支</td></tr></tbody></table>]]></content>
+    
+    
+    <categories>
+      
+      <category>操作系统</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>os</tag>
+      
+      <tag>git</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>os-lab1</title>
     <link href="/2024/09/06/os%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/lab1/"/>
     <url>/2024/09/06/os%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/lab1/</url>
@@ -250,33 +277,6 @@
       <tag>os</tag>
       
       <tag>内存管理</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>os-lab0</title>
-    <link href="/2024/09/06/os%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/lab0/"/>
-    <url>/2024/09/06/os%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/lab0/</url>
-    
-    <content type="html"><![CDATA[<h2 id="1-思考题"><a href="#1-思考题" class="headerlink" title="1.思考题"></a>1.思考题</h2><h3 id="0-1"><a href="#0-1" class="headerlink" title="0.1"></a>0.1</h3><p>README.txt位置:<br>cat Untracked.txt:位于Untracked区<br>cat Stage.txt：Staged区。<br>cat Modified.txt:modifed区。</p><h3 id="0-2"><a href="#0-2" class="headerlink" title="0.2"></a>0.2</h3><p>add the file 、stage the file 和<br>commit 分别对应的是 Git 里的 <code>git add,git add,git commit</code>命令</p><h3 id="0-3"><a href="#0-3" class="headerlink" title="0.3"></a>0.3</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs stylus"><span class="hljs-number">1</span><span class="hljs-selector-class">.git</span> checkout -- print<span class="hljs-selector-class">.c</span><br><span class="hljs-number">2</span><span class="hljs-selector-class">.git</span> reset HEAD print<span class="hljs-selector-class">.c</span><br>git checkout -- print<span class="hljs-selector-class">.c</span><br><span class="hljs-number">3</span><span class="hljs-selector-class">.git</span> rm <span class="hljs-attr">--cached</span> hello.txt<br></code></pre></td></tr></table></figure><h3 id="0-4"><a href="#0-4" class="headerlink" title="0.4"></a>0.4</h3><p>用<code>git reset --hard</code> 进行版本回溯，功能很强大，但是一旦使用，就没有后悔药。</p><h3 id="0-5"><a href="#0-5" class="headerlink" title="0.5"></a>0.5</h3><p>执行结果：<br>1.在shell命令行中输出：<code>first</code><br>2.output.txt文件中为：<code>second</code><br>3.output.txt文件中为：<code>third</code><br>4.output.txt文件中为：</p><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs text">third<br>forth<br></code></pre></td></tr></table></figure><h3 id="0-6"><a href="#0-6" class="headerlink" title="0.6"></a>0.6</h3><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs routeros">result中为：<br>Shell Start<span class="hljs-built_in">..</span>.<br><span class="hljs-built_in">set</span> <span class="hljs-attribute">a</span>=1<br><span class="hljs-built_in">set</span> <span class="hljs-attribute">b</span>=2<br><span class="hljs-built_in">set</span> <span class="hljs-attribute">c</span>=a+b<br>c = 3<br>save c <span class="hljs-keyword">to</span> ./file1<br>save b <span class="hljs-keyword">to</span> ./file2<br>save a <span class="hljs-keyword">to</span> ./file3<br>save file1 file2 file3 <span class="hljs-keyword">to</span> file4<br>save file4 <span class="hljs-keyword">to</span> ./result<br>3<br>2<br>1<br></code></pre></td></tr></table></figure><p>test的第1行打印了Shell Start… test的第2行打印了set a&#x3D;1<br>test的第3行给变量a赋值为1 test的第4行打印了set b&#x3D;2<br>test的第5行给变量b赋值为2 test的第6行打印了set c&#x3D;a+b<br>test的第7行进行了c&#x3D;a+b的运算 test的第8行打印了c&#x3D;3<br>test的第9行打印了save c to .&#x2F;file1<br>test的第10行把c的值重定向到了file1中<br>test的第11行打印了save b to .&#x2F;file2<br>test的第12行把b的值重定向到了file2中<br>test的第13行打印了save a to .&#x2F;file3<br>test的第14行把a的值重定向到了file3中<br>test的第15行打印了save file1 file2 file3 to file4<br>test的17，18，19行把file1，file2，file3的内容全部重定向到了file4中<br>test的第20行打印了save file4 to .&#x2F;result<br>test的第21行把file4的内容重定向到了result中</p><h2 id="2-难点分析"><a href="#2-难点分析" class="headerlink" title="2.难点分析"></a>2.难点分析</h2><ol><li>linux的shell界面不是直观的图形界面，而是用命令行进行所有的任务，一开始难以适应。</li><li>linux中有基本的命令，有许多的脚本命令，还有一些强大的工具命令，初学的命令较多，而且命令的不同参数有不同作用，容易搞混淆，这让不太熟练的初学者感到吃力。</li><li>对于Makefile的理解要到位，特别是不同target之间的依赖关系。</li><li>要学会熟练运用sed和awk等脚本语言的基础命令。</li></ol><p><img src="/2024/09/06/os%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/lab0/lab0-1.PNG"></p><h2 id="3-实验体会"><a href="#3-实验体会" class="headerlink" title="3.实验体会"></a>3.实验体会</h2><p>lab0我们主要对linux系统的命令行操作进行了简单的学习和熟悉。学习了GCC，Makefile，Git等等强大工具的基本使用。我能够明显体会到linux系统与windows系统的不同，Linux系统拥有强大的命令行工具和脚本语言，可以提高工作效率和灵活性。但强大的功能需要我们付出很高的学习成本，许多的命令需要多用多练，在脑中形成长期记忆，才能熟练掌握。<br>本次实验还带我们回忆了c语言和mips的内容，需要我们再一次回顾计组的内容，在学习OS的过程中起到承上启下的作用，也便于我们更好地理解OS的底层原理。</p><table><thead><tr><th align="left">git branch -l                   # 查看所有分支</th></tr></thead><tbody><tr><td align="left">git checkout <branch_name>      # 切换到指定分支</td></tr><tr><td align="left">git checkout -b <branch_name>   # 根据当前分支，新建一个分支并切换到该分支上</td></tr><tr><td align="left">git merge [<branch1>] <branch2> # 将branch2合并到branch1，省略branch1参数时表示合并到当前分支</td></tr></tbody></table>]]></content>
-    
-    
-    <categories>
-      
-      <category>操作系统</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>os</tag>
-      
-      <tag>git</tag>
       
     </tags>
     
